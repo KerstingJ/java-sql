@@ -77,6 +77,10 @@ order by orders desc
 
 ### list orders grouped by customer's city showing number of orders per city. Returns 58 Records with _Aachen_ showing 2 orders and _Albuquerque_ showing 7 orders.
 > This is very similar to the previous two queries, however, it focuses on the City rather than the CustomerName
+*`select count(ship_city) as occurence, ship_city
+from orders
+group by ship_city
+order by occurence desc`
 
 
 
@@ -86,6 +90,9 @@ order by orders desc
 > In the WHERE clause, you can provide another list with an IN keyword this list can be the result of another SELECT query. Write a query to return a list of CustomerIDs that meet the criteria above. Pass that to the IN keyword of the WHERE clause as the list of IDs to be deleted
  
 > Use a LEFT JOIN to join the Orders table onto the Customers table and check for a NULL value in the OrderID column
+delete
+from customers
+where customer_id not in (select customer_id from orders)
 
 ## Create Database and Table
 
